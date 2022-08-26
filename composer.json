@@ -1,0 +1,17 @@
+{
+    "name": "hei-fen\/laravel-sql-logs",
+    "description": "Package description here.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "刘晨雨",
+            "email": "1149385543@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "HeiFen\\LaravelSqlLogs\\": "src"
+        }
+    }
+}
