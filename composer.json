@@ -13,5 +13,12 @@
         "psr-4": {
             "HeiFen\\LaravelSqlLogs\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "SqlLogs": "HeiFen\\LaravelSqlLogs\\SqlLogs"
+            }
+        }
     }
 }
