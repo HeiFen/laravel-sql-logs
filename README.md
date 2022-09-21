@@ -17,11 +17,12 @@ use SqlLogs;
 
 class Kernel extends HttpKernel
 {
-    	protected $middleware = [
-			.
-			.
-        	SqlLogs::class
- 		];
+    protected $middleware = [
+		.
+		.
+    	SqlLogs::class
+ 	];
+}
 ```
 
 ## Contributing
