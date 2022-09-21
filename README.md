@@ -18,8 +18,8 @@ use SqlLogs;
 class Kernel extends HttpKernel
 {
     protected $middleware = [
-		.
-		.
+        .
+        .
     	SqlLogs::class
     ];
 }
