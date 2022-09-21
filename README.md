@@ -13,6 +13,8 @@ $ composer require hei-fen/laravel-sql-logs -vvv
 
 ```php
 
+namespace App\Http;
+
 use SqlLogs;
 
 class Kernel extends HttpKernel
