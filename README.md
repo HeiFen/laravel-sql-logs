@@ -21,7 +21,7 @@ class Kernel extends HttpKernel
 		.
 		.
     	SqlLogs::class
- 	];
+];
 }
 ```
 
