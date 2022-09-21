@@ -12,23 +12,26 @@ class SqlLogs
 
         // 获取sql日志信息
         $logs = \DB::getQueryLog();
-        // dd($request->path());
+
+        $logFile = fopen(
+            storage_path('logs' . DIRECTORY_SEPARATOR . 'sql-' . date('Y-m-d') . '.log'),
+            'a+'
+        );
 
         // 输出日志到文件
-        \Log::info('——————————————————————————————————————————请求开始');
-        \Log::info('请求地址【' . $request->path() . '】');
+        fwrite($logFile, '[' . date('Y-m-d H:i:s') . ']: ——————————————————————————————————————————请求开始' . PHP_EOL);
+        fwrite($logFile, '请求地址【' . $request->path() . '】' . PHP_EOL);
         foreach ($logs as $log) {
             // 组装sql
             $sql = $log['query'];
-            foreach ($log['bindings'] as $replace){
-                $value = is_numeric($replace) ? $replace : "'".$replace."'";
-                $sql = preg_replace('/\?/', $value, $sql, 1);
-            }
+            $query = str_replace(array('%', '?'), array('%%', '%s'), $sql);
+            $query = vsprintf($query, $log['bindings']);
 
-            \Log::info($sql);
-            \Log::info("耗时【 ".$log['time']." ms 】");
+            // 打印sql
+            fwrite($logFile, "耗时【 ".$log['time']." ms 】" . $query . PHP_EOL);
         }
-        \Log::info('——————————————————————————————————————————请求结束');
+        fwrite($logFile, '[' . date('Y-m-d H:i:s') . ']: ——————————————————————————————————————————请求结束' . PHP_EOL . PHP_EOL . PHP_EOL);
+        fclose($logFile);
 
         return $response;
     }

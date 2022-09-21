@@ -3,15 +3,26 @@
 <p align="center"> .</p>
 
 
-## Installing
+## 安装
 
 ```shell
 $ composer require hei-fen/laravel-sql-logs -vvv
 ```
 
-## Usage
+## 使用
 
-TODO
+```php
+
+use SqlLogs;
+
+class Kernel extends HttpKernel
+{
+    	protected $middleware = [
+			.
+			.
+        	SqlLogs::class
+ 		];
+```
 
 ## Contributing
 
